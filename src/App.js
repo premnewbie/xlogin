@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <h1>Login Page</h1>
       {!valid && <p>Invalid username or password</p>}
-      {!loggedIn && <form>
+      {!loggedIn && <form onSubmit={(e)=>handleValidation(e)}>
         <div>
           <label>Username:</label>
           <input type='text' required onInput={(e)=>setUser(e.target.value)}/>
@@ -30,7 +30,7 @@ function App() {
           <label>Password:</label>
           <input type='password' required onInput={(e)=>setPassword(e.target.value)}/>
         </div>
-        <button type='submit' onSubmit={(e)=>handleValidation(e)}>Submit</button>
+        <button type='submit'>Submit</button>
       </form>}
       {loggedIn && <p>Welcome, user!</p>}
     </div>
