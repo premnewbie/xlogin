@@ -22,8 +22,14 @@ function App() {
       <h1>Login Page</h1>
       {!valid && <p>Invalid username or password</p>}
       {!loggedIn && <form>
-        <input type='text' required onInput={(e)=>setUser(e.target.value)}/>
-        <input type='password' required onInput={(e)=>setPassword(e.target.value)}/>
+        <div>
+          <label>Username:</label>
+          <input type='text' required onInput={(e)=>setUser(e.target.value)}/>
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type='password' required onInput={(e)=>setPassword(e.target.value)}/>
+        </div>
         <button onClick={(e)=>handleValidation(e)}>Submit</button>
       </form>}
       {loggedIn && <p>Welcome, user!</p>}
