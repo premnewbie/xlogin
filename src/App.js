@@ -30,7 +30,7 @@ function App() {
           <label>Password:</label>
           <input type='password' required onInput={(e)=>setPassword(e.target.value)}/>
         </div>
-        <button onClick={(e)=>handleValidation(e)}>Submit</button>
+        <button type='submit' onSubmit={(e)=>handleValidation(e)}>Submit</button>
       </form>}
       {loggedIn && <p>Welcome, user!</p>}
     </div>
