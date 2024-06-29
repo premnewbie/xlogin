@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import {useState} from 'react';
 import './App.css';
 
 function App() {
+  const [user,setUser] = useState('');
+  const [password,setPassword] = useState('');
+  const [valid,setValid] = useState(true);
+  const [loggedIn,setLoggedIn] = useState(false);
+
+  const handleValidation = (e) => {
+    e.preventDefault();
+    if(user!=='user' || password!=='password'){
+      setValid(false);
+    } else{
+      setLoggedIn(true);
+      setValid(true);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Login Page</h1>
+      {!valid && <p>Invalid username or password</p>}
+      {!loggedIn && <form>
+        <input type='text' required onInput={(e)=>setUser(e.target.value)}/>
+        <input type='password' required onInput={(e)=>setPassword(e.target.value)}/>
+        <button onClick={(e)=>handleValidation(e)}>Submit</button>
+      </form>}
+      {loggedIn && <p>Welcome, user!</p>}
     </div>
   );
 }
